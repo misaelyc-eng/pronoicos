@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRONOICOS — Experiencias Visuales</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:#05060a;color:#fff}
+.hero{
+min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;
+background:
+radial-gradient(circle at 20% 20%,rgba(0,217,255,.18),transparent 30%),
+radial-gradient(circle at 80% 30%,rgba(255,0,170,.15),transparent 30%),
+#05060a;
+}
+.logo{width:140px;max-width:30vw}
+h1{font-size:clamp(3rem,9vw,8rem);line-height:.9;font-weight:900;margin:24px 0}
+.sub{max-width:700px;margin:auto;color:#bdbdbd;line-height:1.8}
+.section{padding:90px 6vw}
+.label{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#888;margin-bottom:30px}
+.hero-project{border-radius:28px;overflow:hidden;position:relative;margin-bottom:24px}
+.hero-project video{width:100%;display:block}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.card{position:relative;border-radius:24px;overflow:hidden;cursor:pointer}
+.card img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:16/9}
+.info{position:absolute;left:0;right:0;bottom:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.92))}
+.info h3{font-size:1.4rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.tile{border-radius:18px;overflow:hidden}
+.tile video{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.footer{text-align:center;padding:80px 20px;border-top:1px solid rgba(255,255,255,.08)}
+.btn{display:inline-block;padding:14px 22px;border-radius:999px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#ff00aa,#00d9ff);margin-top:20px}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:999;align-items:center;justify-content:center;padding:20px}
+#modal iframe{width:90vw;height:80vh;border:none;border-radius:20px}
+@media(max-width:800px){
+.grid2{grid-template-columns:1fr}
+h1{font-size:16vw}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div>
+<img src="images/pronoicos-logo.png" class="logo">
+<h1>EXPERIENCIAS<br>VISUALES</h1>
+<p class="sub">Motion graphics, arquitectura, branding, tecnología y storytelling visual.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="label">Featured</div>
+
+<div class="hero-project">
+<video autoplay muted loop playsinline>
+<source src="videos/Torre-Botanica.mp4">
+</video>
+</div>
+
+<div class="grid2">
+<div class="card" data-vimeo="1196518830">
+<img src="images/Becarat.png">
+<div class="info"><h3>Baccarat Residences</h3></div>
+</div>
+
+<div class="card" data-vimeo="898467248">
+<img src="images/Mirai.png">
+<div class="info"><h3>MIRAI / Kengo Kuma</h3></div>
+</div>
+
+<div class="card" data-vimeo="1196522188">
+<img src="images/SLS.png">
+<div class="info"><h3>SLS Ocean Beach</h3></div>
+</div>
+
+<div class="card" data-vimeo="190297502">
+<img src="images/Sony.png">
+<div class="info"><h3>Sony Channel</h3></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="label">Motion & Brands</div>
+<div class="grid">
+<div class="card" data-vimeo="683870036"><img src="images/StockCenter.png"></div>
+<div class="card" data-vimeo="1196520596"><img src="images/VacaViva.png"></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/Payonner.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/OpenPay.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/Bayer.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/MakroPost.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/A24_Nova.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/A24_Rossi.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/A24_Feinmann.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/DOO_logo.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/Cogul_logo.mp4"></video></div>
+<div class="tile"><video autoplay muted loop playsinline><source src="videos/La-Reserva.mp4"></video></div>
+</div>
+</section>
+
+<footer class="footer">
+<h2>PRONOICOS</h2>
+<p>Buenos Aires · Argentina</p>
+<a class="btn" href="https://wa.me/542215367216">WhatsApp</a>
+</footer>
+
+<div id="modal"></div>
+
+<script>
+const modal=document.getElementById('modal');
+document.querySelectorAll('[data-vimeo]').forEach(el=>{
+el.onclick=()=>{
+modal.innerHTML='<iframe src="https://player.vimeo.com/video/'+el.dataset.vimeo+'?autoplay=1" allow="autoplay;fullscreen" allowfullscreen></iframe>';
+modal.style.display='flex';
+}
+});
+modal.onclick=()=>{modal.style.display='none';modal.innerHTML='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.style.display='none';modal.innerHTML='';}});
+</script>
+
+</body>
+</html>
